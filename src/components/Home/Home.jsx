@@ -35,7 +35,7 @@ const Home = () => {
         <div className="space-y-16">
 
             {/* Hero Section */}
-            {/* 🌿 Hero Section */}
+            
             <section className="relative w-full h-[400px] md:h-[500px]">
                 <Swiper
                     modules={[Autoplay]}
@@ -75,7 +75,7 @@ const Home = () => {
             </section>
 
             {/* Top Rated Indoor Plants */}
-            {/* 🌱 Top Rated Indoor Plants */}
+            
             <section className="max-w-7xl mx-auto px-4">
                 <h2 className="text-2xl md:text-3xl font-semibold mb-6">
                     Top Rated Indoor Plants
