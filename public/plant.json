@@ -1,0 +1,98 @@
+[
+  {
+    "plantId": 1,
+    "plantName": "Snake Plant",
+    "category": "Air Purifier",
+    "price": 18,
+    "rating": 4.8,
+    "availableStock": 10,
+    "careLevel": "Easy",
+    "description": "A hardy plant that purifies indoor air and thrives in low light.",
+    "image": "https://i.postimg.cc/example1.png",
+    "providerName": "UrbanGreen Studio"
+  },
+  {
+    "plantId": 2,
+    "plantName": "Fiddle Leaf Fig",
+    "category": "Decorative",
+    "price": 45,
+    "rating": 4.5,
+    "availableStock": 5,
+    "careLevel": "Medium",
+    "description": "A popular ornamental plant with large, glossy leaves that brighten any room.",
+    "image": "https://i.postimg.cc/example2.png",
+    "providerName": "GreenHome Co."
+  },
+  {
+    "plantId": 3,
+    "plantName": "Peace Lily",
+    "category": "Air Purifier",
+    "price": 25,
+    "rating": 4.6,
+    "availableStock": 8,
+    "careLevel": "Easy",
+    "description": "Beautiful white blooms and excellent air purification properties.",
+    "image": "https://i.postimg.cc/example3.png",
+    "providerName": "UrbanGreen Studio"
+  },
+  {
+    "plantId": 4,
+    "plantName": "Monstera Deliciosa",
+    "category": "Decorative",
+    "price": 35,
+    "rating": 4.7,
+    "availableStock": 6,
+    "careLevel": "Medium",
+    "description": "Iconic split-leaf plant perfect for living rooms with indirect sunlight.",
+    "image": "https://i.postimg.cc/example4.png",
+    "providerName": "LeafyLane"
+  },
+  {
+    "plantId": 5,
+    "plantName": "Spider Plant",
+    "category": "Air Purifier",
+    "price": 15,
+    "rating": 4.4,
+    "availableStock": 12,
+    "careLevel": "Easy",
+    "description": "Fast-growing plant known for producing 'baby' plants and improving indoor air quality.",
+    "image": "https://i.postimg.cc/example5.png",
+    "providerName": "GreenHome Co."
+  },
+  {
+    "plantId": 6,
+    "plantName": "ZZ Plant",
+    "category": "Low Maintenance",
+    "price": 22,
+    "rating": 4.5,
+    "availableStock": 7,
+    "careLevel": "Easy",
+    "description": "A low-light, drought-tolerant plant with shiny, hearty leaves.",
+    "image": "https://i.postimg.cc/example6.png",
+    "providerName": "LeafyLane"
+  },
+  {
+    "plantId": 7,
+    "plantName": "Aloe Vera",
+    "category": "Medicinal",
+    "price": 20,
+    "rating": 4.9,
+    "availableStock": 9,
+    "careLevel": "Easy",
+    "description": "A healing succulent that thrives in sunlight and requires minimal watering.",
+    "image": "https://i.postimg.cc/example7.png",
+    "providerName": "NatureNest"
+  },
+  {
+    "plantId": 8,
+    "plantName": "Pothos (Money Plant)",
+    "category": "Climbing",
+    "price": 17,
+    "rating": 4.7,
+    "availableStock": 15,
+    "careLevel": "Easy",
+    "description": "A fast-growing vine known for good luck and air-purifying properties.",
+    "image": "https://i.postimg.cc/example8.png",
+    "providerName": "UrbanGreen Studio"
+  }
+]
