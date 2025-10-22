@@ -1,5 +1,10 @@
 import React, { useState } from "react";
-import { createUserWithEmailAndPassword, updateProfile, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { 
+  createUserWithEmailAndPassword, 
+  updateProfile, 
+  GoogleAuthProvider, 
+  signInWithPopup 
+} from "firebase/auth";
 import { useNavigate, Link } from "react-router";
 import { auth } from "../../firebase/firebase.init";
 import toast from "react-hot-toast";
@@ -7,6 +12,7 @@ import toast from "react-hot-toast";
 const Register = () => {
   const [loading, setLoading] = useState(false);
   const [passwordError, setPasswordError] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
   const googleProvider = new GoogleAuthProvider();
 
@@ -46,12 +52,14 @@ const Register = () => {
   };
 
   const handleGoogleSignUp = () => {
+    setLoading(true);
     signInWithPopup(auth, googleProvider)
       .then(() => {
         toast.success("Signed up with Google!");
         navigate("/");
       })
-      .catch((error) => toast.error(error.message));
+      .catch((error) => toast.error(error.message))
+      .finally(() => setLoading(false));
   };
 
   return (
@@ -63,7 +71,24 @@ const Register = () => {
           <input type="text" name="name" placeholder="Full Name" className="input input-bordered w-full" required />
           <input type="text" name="photo" placeholder="Photo URL" className="input input-bordered w-full" />
           <input type="email" name="email" placeholder="Email" className="input input-bordered w-full" required />
-          <input type="password" name="password" placeholder="Password" className="input input-bordered w-full" required />
+
+          {/* Password input with toggle */}
+          <div className="relative">
+            <input
+              type={showPassword ? "text" : "password"}
+              name="password"
+              placeholder="Password"
+              required
+              className="input input-bordered w-full pr-10 focus:outline-none"
+            />
+            <button
+              type="button"
+              onClick={() => setShowPassword(!showPassword)}
+              className="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-500 z-10"
+            >
+              {showPassword ? "🙈" : "👁️"}
+            </button>
+          </div>
 
           {passwordError && <p className="text-red-500 text-sm">{passwordError}</p>}
 
@@ -74,7 +99,7 @@ const Register = () => {
 
         <div className="divider">OR</div>
 
-        <button onClick={handleGoogleSignUp} className="btn btn-outline w-full">
+        <button onClick={handleGoogleSignUp} className="btn btn-outline w-full flex items-center justify-center" disabled={loading}>
           <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google" className="w-5 h-5 mr-2" />
           Continue with Google
         </button>
