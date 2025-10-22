@@ -8,6 +8,9 @@ import {
 import { useNavigate, Link } from "react-router";
 import { auth } from "../../firebase/firebase.init";
 import toast from "react-hot-toast";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
+import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 
 const Register = () => {
   const [loading, setLoading] = useState(false);
@@ -86,7 +89,7 @@ const Register = () => {
               onClick={() => setShowPassword(!showPassword)}
               className="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-500 z-10"
             >
-              {showPassword ? "🙈" : "👁️"}
+             {showPassword ? <FontAwesomeIcon icon={faEyeSlash} />:<FontAwesomeIcon icon={faEye} />}
             </button>
           </div>
 
@@ -100,7 +103,7 @@ const Register = () => {
         <div className="divider">OR</div>
 
         <button onClick={handleGoogleSignUp} className="btn btn-outline w-full flex items-center justify-center" disabled={loading}>
-          <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google" className="w-5 h-5 mr-2" />
+          <FontAwesomeIcon icon={faGoogle} />
           Continue with Google
         </button>
 
