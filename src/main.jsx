@@ -10,6 +10,7 @@ import Register from "./components/Register/Register";
 import AuthProvider from "./context/AuthProvider";
 import PrivateRoute from "./routes/PrivateRoute";
 import PlantDetails from "./components/PlantDetails/PlantDetails";
+import Profile from "./components/My profile/Profile";
 
 const router = createBrowserRouter([
   {
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
       },
+      {
+        path:"profile",
+        Component:Profile
+      }
     ],
   },
 ]);
