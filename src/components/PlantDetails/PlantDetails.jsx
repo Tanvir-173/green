@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
-import { toast } from "react-hot-toast"; // optional but nice
+import { toast } from "react-hot-toast"; 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faStar } from "@fortawesome/free-solid-svg-icons";
 
 
 const PlantDetails = () => {
@@ -19,7 +21,7 @@ const PlantDetails = () => {
   const handleBook = (e) => {
     e.preventDefault();
     e.target.reset();
-    toast.success("Consultation booked successfully! 🌿");
+    toast.success("Consultation booked successfully!");
   };
 
   if (!plant) return <p className="text-center mt-10">Loading plant details...</p>;
@@ -29,7 +31,7 @@ const PlantDetails = () => {
       {/* Image and details */}
       <div className="flex flex-col md:flex-row gap-8">
         <img
-          src={plant.image}
+          src={`/${plant.image}`}
           alt={plant.plantName}
           className="w-full md:w-1/2 h-96 object-cover rounded-lg"
         />
@@ -39,7 +41,7 @@ const PlantDetails = () => {
           <p className="text-green-700 font-semibold text-lg mb-1">
             Price: ${plant.price}
           </p>
-          <p className="text-yellow-500 mb-1">⭐ Rating: {plant.rating}</p>
+          <p className="text-yellow-500 mb-1"><FontAwesomeIcon icon={faStar} /> Rating: {plant.rating}</p>
           <p className="text-gray-600">Stock: {plant.stock}</p>
         </div>
       </div>

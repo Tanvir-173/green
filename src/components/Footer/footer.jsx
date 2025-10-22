@@ -1,4 +1,8 @@
 import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSquareInstagram } from "@fortawesome/free-brands-svg-icons";
+import { faFacebookF } from "@fortawesome/free-brands-svg-icons";
+import { faPinterest } from "@fortawesome/free-brands-svg-icons";
 
 const Footer = () => {
   return (
@@ -15,13 +19,13 @@ const Footer = () => {
         {/* Social Media Icons */}
         <div className="flex space-x-4 mb-4 md:mb-0">
           <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
-            <i className="fab fa-instagram text-xl hover:text-green-900"></i>
+              <FontAwesomeIcon icon={faSquareInstagram} />
           </a>
           <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
-            <i className="fab fa-facebook text-xl hover:text-green-900"></i>
+           <FontAwesomeIcon icon={faFacebookF} />
           </a>
           <a href="https://pinterest.com" target="_blank" rel="noopener noreferrer">
-            <i className="fab fa-pinterest text-xl hover:text-green-900"></i>
+           <FontAwesomeIcon icon={faPinterest} />
           </a>
         </div>
 

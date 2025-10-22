@@ -5,6 +5,13 @@ import "swiper/css";
 import ExpertCard from "../ExpertCard/ExpertCard";
 import treeimg from "../../assets/image.png"
 import { Link } from "react-router"
+import dendro from "../../assets/dendro.jpg"
+import serv from "../../assets/sirv.jpg"
+import ecolo from "../../assets/ecologi.jpg"
+import PlantOfTheWeek from "../platoftheweek/plantofTheweek";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faStar } from "@fortawesome/free-solid-svg-icons";
+
 const Home = () => {
     const [plants, setPlants] = useState([]);
 
@@ -26,16 +33,16 @@ const Home = () => {
     ];
     console.log(careTips)
     const experts = [
-        { name: "Alice Green", image: "https://i.postimg.cc/expert1.png", specialty: "Air-Purifying Plants" },
-        { name: "Brian Leaf", image: "https://i.postimg.cc/expert2.png", specialty: "Decorative Indoor Plants" },
-        { name: "Clara Root", image: "https://i.postimg.cc/expert3.png", specialty: "Low-Maintenance Plants" },
+        { name: "Piet de Jong", image: dendro, specialty: "dendrologist" },
+        { name: "Prof. Edward (Ted) Wilson MSIF FRSB", image: serv, specialty: "silviculturist" },
+        { name: "Nalini Nadkarni", image: ecolo, specialty: "Forest Ecologist" },
     ];
 
     return (
         <div className="space-y-16">
 
             {/* Hero Section */}
-            
+
             <section className="relative w-full h-[400px] md:h-[500px]">
                 <Swiper
                     modules={[Autoplay]}
@@ -75,7 +82,7 @@ const Home = () => {
             </section>
 
             {/* Top Rated Indoor Plants */}
-            
+
             <section className="max-w-7xl mx-auto px-4">
                 <h2 className="text-2xl md:text-3xl font-semibold mb-6">
                     Top Rated Indoor Plants
@@ -95,7 +102,7 @@ const Home = () => {
                                 />
                                 <h3 className="font-semibold text-lg mb-1">{plant.plantName}</h3>
                                 <p className="text-green-700 font-bold mb-1">${plant.price}</p>
-                                <p className="text-yellow-500 mb-3">⭐ {plant.rating}</p>
+                                <p className="text-yellow-500 mb-3"><FontAwesomeIcon icon={faStar} /> {plant.rating}</p>
 
                                 <Link to={`/plants/${plant.plantId}`} className="mt-auto">
                                     <button className="w-full bg-green-600 hover:bg-green-700 text-white py-2 rounded-md font-medium transition">
@@ -142,6 +149,10 @@ const Home = () => {
                     </p>
                 </div>
             </section>
+            <div>
+                {/* Plant of the week*/}
+                <PlantOfTheWeek />
+            </div>
 
         </div>
     );

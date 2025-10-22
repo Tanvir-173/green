@@ -8,7 +8,7 @@
     "availableStock": 10,
     "careLevel": "Easy",
     "description": "A hardy plant that purifies indoor air and thrives in low light.",
-    "image": "https://i.postimg.cc/example1.png",
+    "image": "snake-p.jpg",
     "providerName": "UrbanGreen Studio"
   },
   {
@@ -20,7 +20,7 @@
     "availableStock": 5,
     "careLevel": "Medium",
     "description": "A popular ornamental plant with large, glossy leaves that brighten any room.",
-    "image": "https://i.postimg.cc/example2.png",
+    "image": "fiddle.jpg",
     "providerName": "GreenHome Co."
   },
   {
@@ -32,7 +32,7 @@
     "availableStock": 8,
     "careLevel": "Easy",
     "description": "Beautiful white blooms and excellent air purification properties.",
-    "image": "https://i.postimg.cc/example3.png",
+    "image": "peacelily.jpg",
     "providerName": "UrbanGreen Studio"
   },
   {
@@ -44,7 +44,7 @@
     "availableStock": 6,
     "careLevel": "Medium",
     "description": "Iconic split-leaf plant perfect for living rooms with indirect sunlight.",
-    "image": "https://i.postimg.cc/example4.png",
+    "image": "mond.png",
     "providerName": "LeafyLane"
   },
   {
@@ -56,7 +56,7 @@
     "availableStock": 12,
     "careLevel": "Easy",
     "description": "Fast-growing plant known for producing 'baby' plants and improving indoor air quality.",
-    "image": "https://i.postimg.cc/example5.png",
+    "image": "spider.jpg",
     "providerName": "GreenHome Co."
   },
   {
@@ -68,7 +68,7 @@
     "availableStock": 7,
     "careLevel": "Easy",
     "description": "A low-light, drought-tolerant plant with shiny, hearty leaves.",
-    "image": "https://i.postimg.cc/example6.png",
+    "image": "zzz.png",
     "providerName": "LeafyLane"
   },
   {
@@ -80,7 +80,7 @@
     "availableStock": 9,
     "careLevel": "Easy",
     "description": "A healing succulent that thrives in sunlight and requires minimal watering.",
-    "image": "https://i.postimg.cc/example7.png",
+    "image": "alover.jpg",
     "providerName": "NatureNest"
   },
   {
@@ -92,7 +92,7 @@
     "availableStock": 15,
     "careLevel": "Easy",
     "description": "A fast-growing vine known for good luck and air-purifying properties.",
-    "image": "https://i.postimg.cc/example8.png",
+    "image": "mplant.jpg",
     "providerName": "UrbanGreen Studio"
   }
 ]
