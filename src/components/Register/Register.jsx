@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { 
   createUserWithEmailAndPassword, 
   updateProfile, 
@@ -11,6 +11,7 @@ import toast from "react-hot-toast";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { faGoogle } from "@fortawesome/free-brands-svg-icons";
+import { AuthContext } from "../../context/AuthProvider";
 
 const Register = () => {
   const [loading, setLoading] = useState(false);
@@ -18,41 +19,57 @@ const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
   const googleProvider = new GoogleAuthProvider();
+  const { setUser } = useContext(AuthContext);
 
-  const handleRegister = (e) => {
-    e.preventDefault();
-    const name = e.target.name.value;
-    const photo = e.target.photo.value;
-    const email = e.target.email.value;
-    const password = e.target.password.value;
+  const handleRegister = async (e) => {
+  e.preventDefault();
+  const name = e.target.name.value;
+  const photo = e.target.photo.value;
+  const email = e.target.email.value;
+  const password = e.target.password.value;
 
-    // Password validation
-    if (!/(?=.*[A-Z])/.test(password)) {
-      setPasswordError("Password must contain at least one uppercase letter.");
-      return;
-    }
-    if (!/(?=.*[a-z])/.test(password)) {
-      setPasswordError("Password must contain at least one lowercase letter.");
-      return;
-    }
-    if (password.length < 6) {
-      setPasswordError("Password must be at least 6 characters long.");
-      return;
-    }
-    setPasswordError("");
-    setLoading(true);
+  // Password validation
+  if (!/(?=.*[A-Z])/.test(password)) {
+    setPasswordError("Password must contain at least one uppercase letter.");
+    return;
+  }
+  if (!/(?=.*[a-z])/.test(password)) {
+    setPasswordError("Password must contain at least one lowercase letter.");
+    return;
+  }
+  if (password.length < 6) {
+    setPasswordError("Password must be at least 6 characters long.");
+    return;
+  }
 
-    createUserWithEmailAndPassword(auth, email, password)
-      .then((res) => {
-        updateProfile(res.user, { displayName: name, photoURL: photo });
-        toast.success("Registration successful!");
-        navigate("/");
-      })
-      .catch((error) => {
-        toast.error(error.message);
-      })
-      .finally(() => setLoading(false));
-  };
+  setPasswordError("");
+  setLoading(true);
+
+  try {
+    // Create user
+    const res = await createUserWithEmailAndPassword(auth, email, password);
+
+    // Update profile
+    await updateProfile(res.user, {
+      displayName: name,
+      photoURL: photo,
+    });
+
+    // Instantly update AuthContext
+    setUser({
+      ...res.user,
+      displayName: name,
+      photoURL: photo,
+    });
+
+    toast.success("Registration successful!");
+    navigate("/"); // Go home immediately
+  } catch (error) {
+    toast.error(error.message);
+  } finally {
+    setLoading(false);
+  }
+};
 
   const handleGoogleSignUp = () => {
     setLoading(true);
