@@ -1,35 +1,51 @@
-import React, { useContext, useState } from "react";
-import { updateProfile } from "firebase/auth";
+import React, { useState, useContext } from "react";
 import { AuthContext } from "../../context/AuthProvider";
 import { auth } from "../../firebase/firebase.init";
+import { updateProfile } from "firebase/auth";
 import toast from "react-hot-toast";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserCircle } from "@fortawesome/free-solid-svg-icons";
+import dendro from "../../assets/dendro.jpg"; 
+
+const MAX_URL_LENGTH = 2000; 
 
 const Profile = () => {
   const { user, setUser } = useContext(AuthContext);
   const [name, setName] = useState(user?.displayName || "");
-  const [photo, setPhoto] = useState(user?.photoURL || "");
- 
+  const [photoURL, setPhotoURL] = useState(user?.photoURL || "");
   const [loading, setLoading] = useState(false);
 
-  const handleUpdateProfile = (e) => {
+  const handleUpdateProfile = async (e) => {
     e.preventDefault();
+
+    // Validate photoURL length
+    if (photoURL.length > MAX_URL_LENGTH) {
+      toast.error("Photo URL is too long. Please use a shorter URL.");
+      return;
+    }
+
     setLoading(true);
 
-    updateProfile(auth.currentUser, {
-      displayName: name,
-      photoURL: photo,
-    })
-      .then(() => {
-        toast.success("Profile updated successfully!");
-        setUser({ ...auth.currentUser });
-        console.log(user)
-      })
-      .catch((error) => {
-        toast.error(error.message);
-      })
-      .finally(() => setLoading(false));
+    try {
+      await updateProfile(auth.currentUser, {
+        displayName: name,
+        photoURL: photoURL || null, 
+      });
+
+      // Update context immediately so Navbar updates
+      setUser({
+        ...auth.currentUser,
+        displayName: name,
+        photoURL: photoURL || null,
+      });
+
+      toast.success("Profile updated successfully!");
+    } catch (err) {
+      console.error(err);
+      toast.error(err.message);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -40,11 +56,13 @@ const Profile = () => {
         {user ? (
           <>
             <div className="flex flex-col items-center mb-6">
-              {user.photoURL ? (
+              {photoURL ? (
                 <img
-                  src={user.photoURL}
+                  src={photoURL}
                   alt="User"
-                  className="w-24 h-24 rounded-full mb-3 border"
+                  className="w-24 h-24 rounded-full mb-3 border object-cover"
+                  referrerPolicy="no-referrer"
+                  onError={(e) => (e.currentTarget.src = dendro)} 
                 />
               ) : (
                 <FontAwesomeIcon
@@ -68,13 +86,15 @@ const Profile = () => {
                   className="input input-bordered w-full"
                 />
               </div>
+
               <div>
                 <label className="block mb-1 font-medium">Photo URL</label>
                 <input
                   type="text"
-                  value={photo}
-                  onChange={(e) => setPhoto(e.target.value)}
+                  value={photoURL}
+                  onChange={(e) => setPhotoURL(e.target.value)}
                   className="input input-bordered w-full"
+                  placeholder="Enter image URL (max 2000 chars)"
                 />
               </div>
 

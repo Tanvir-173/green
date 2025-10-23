@@ -11,6 +11,7 @@ import AuthProvider from "./context/AuthProvider";
 import PrivateRoute from "./routes/PrivateRoute";
 import PlantDetails from "./components/PlantDetails/PlantDetails";
 import Profile from "./components/My profile/Profile";
+import Plant from "./components/Plants/Plant";
 
 const router = createBrowserRouter([
   {
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
       {
         path:"profile",
         Component:Profile
+      },
+      {
+        path:"plants",
+        Component:Plant
       }
     ],
   },

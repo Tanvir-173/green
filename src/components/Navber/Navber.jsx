@@ -1,7 +1,10 @@
 import React, { useState, useContext } from "react";
 import { NavLink } from "react-router";
 import { AuthContext } from "../../context/AuthProvider";
-import logo from "./gree.jpg"
+import logo from "./gree.jpg";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUserCircle } from "@fortawesome/free-solid-svg-icons";
+import dendro from "../../assets/dendro.jpg"; 
 
 const Navbar = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -35,10 +38,9 @@ const Navbar = () => {
         )}
       </div>
 
-      <div className="navbar-center  felx flex-col md:flex-row">
-        <img className="w-10 h-10" src={logo} />
+      <div className="navbar-center flex flex-col md:flex-row">
+        <img className="w-10 h-10" src={logo} alt="Logo" />
         <p className="btn btn-ghost text-xl normal-case">GreenNest</p>
-
       </div>
 
       <div className="navbar-end hidden md:flex items-center space-x-6">
@@ -55,14 +57,18 @@ const Navbar = () => {
                 src={user.photoURL}
                 alt="User Profile"
                 className="w-10 h-10 rounded-full border-2 border-green-700 object-cover"
+                referrerPolicy="no-referrer"
+                onError={(e) => (e.currentTarget.src = dendro)}
               />
             ) : (
               <div className="w-10 h-10 rounded-full bg-green-200 flex items-center justify-center text-green-700 font-bold">
-                P
+                <FontAwesomeIcon
+                  icon={faUserCircle}
+                  className="text-6xl text-gray-400 mb-0"
+                />
               </div>
             )}
           </NavLink>
-
         )}
       </div>
 
@@ -93,4 +99,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-

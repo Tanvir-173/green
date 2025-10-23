@@ -1,16 +1,19 @@
-# React + Vite
+Project Tools & Usage (briefly)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+React – Frontend library to build components like Navbar, Profile, Home, and Plant.
 
-Currently, two official plugins are available:
+Firebase – Backend service for Authentication, Firestore, and Storage, handling login, logout, and user profile updates.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+React Context & Private Route 
 
-## React Compiler
+AuthContext stores the current user globally.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Private Route ensures certain pages (like Profile) are only accessible to logged-in users.
 
-## Expanding the ESLint configuration
+Tailwind CSS – Utility-first CSS for responsive layouts, colors, and styling.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+React Hot Toast – Shows success/error notifications, e.g., when profile updates.
+
+FontAwesome – Provides icons, e.g. profile placeholder when no photo is available.
+
+Google Fonts – Custom fonts like Playwrite DE SAS for better typography.

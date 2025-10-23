@@ -11,6 +11,8 @@ import ecolo from "../../assets/ecologi.jpg"
 import PlantOfTheWeek from "../platoftheweek/plantofTheweek";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
+import tree from "../../assets/pexels-pixabay-33044.jpg"
+import  "./Home.css"
 
 const Home = () => {
     const [plants, setPlants] = useState([]);
@@ -56,10 +58,10 @@ const Home = () => {
                             className="bg-cover bg-center h-full flex items-center justify-center text-white"
                             style={{
                                 backgroundImage:
-                                    `url(${treeimg})`,
+                                    `url(${tree})`,
                             }}
                         >
-                            <h1 className="text-3xl md:text-5xl font-bold bg-black bg-opacity-30 p-4 rounded">
+                            <h1 className="text-3xl md:text-5xl font-bold bg-green bg-opacity-30 p-4 rounded playwrite-de-sas-regular">
                                 Bring Nature Home
                             </h1>
                         </div>
@@ -73,7 +75,7 @@ const Home = () => {
                                     `url(${treeimg})`,
                             }}
                         >
-                            <h1 className="text-3xl md:text-5xl font-bold bg-black bg-opacity-30 p-4 rounded">
+                            <h1 className="text-3xl md:text-5xl font-bold bg-green bg-opacity-30 p-4 rounded playwrite-de-sas-regular">
                                 Indoor Plants, Happy Life
                             </h1>
                         </div>
