@@ -10,6 +10,7 @@ const Profile = () => {
   const { user, setUser } = useContext(AuthContext);
   const [name, setName] = useState(user?.displayName || "");
   const [photo, setPhoto] = useState(user?.photoURL || "");
+ 
   const [loading, setLoading] = useState(false);
 
   const handleUpdateProfile = (e) => {
@@ -23,6 +24,7 @@ const Profile = () => {
       .then(() => {
         toast.success("Profile updated successfully!");
         setUser({ ...auth.currentUser });
+        console.log(user)
       })
       .catch((error) => {
         toast.error(error.message);

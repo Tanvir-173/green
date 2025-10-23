@@ -1,10 +1,11 @@
 import React, { useState, useContext } from "react";
 import { NavLink } from "react-router";
-import { AuthContext } from "../../context/AuthProvider"; // import context
+import { AuthContext } from "../../context/AuthProvider"; 
+import logo from "./gree.jpg"
 
 const Navbar = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const { user, logOut } = useContext(AuthContext); // get user & logout
+  const { user, logOut } = useContext(AuthContext); 
 
   const handleLogout = async () => {
     try {
@@ -34,10 +35,10 @@ const Navbar = () => {
         )}
       </div>
 
-      <div className="navbar-center">
-        <NavLink to="/" className="btn btn-ghost text-xl normal-case">
-          GreenNest
-        </NavLink>
+      <div className="navbar-center  felx flex-col md:flex-row">
+          <img className="w-10 h-10" src={logo}/>
+          <p className="btn btn-ghost text-xl normal-case">GreenNest</p> 
+        
       </div>
 
       <div className="navbar-end hidden md:flex items-center space-x-6">
