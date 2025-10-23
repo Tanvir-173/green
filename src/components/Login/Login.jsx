@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { 
-  signInWithEmailAndPassword, 
-  GoogleAuthProvider, 
-  signInWithPopup, 
-  sendPasswordResetEmail 
+import {
+  signInWithEmailAndPassword,
+  GoogleAuthProvider,
+  signInWithPopup,
+  sendPasswordResetEmail
 } from "firebase/auth";
 import { useNavigate, useLocation, Link } from "react-router";
 import { auth } from "../../firebase/firebase.init";
@@ -53,20 +53,33 @@ const Login = () => {
   };
 
   // Forgot password
-  const handleForgotPassword = () => {
+  const handleForgotPassword = async () => {
     const email = prompt("Enter your registered email:");
     if (!email) {
       toast.error("Please enter an email address.");
       return;
     }
 
-    sendPasswordResetEmail(auth, email)
-      .then(() => {
-        toast.success("Password reset email sent! Check your inbox.");
-      })
-      .catch((error) => {
-        toast.error(error.message);
-      });
+    // Redirect after password reset (change to your deployed site login page)
+    const actionCodeSettings = {
+      url: import.meta.env.VITE_APP_URL + "/login", 
+      handleCodeInApp: false, 
+    };
+
+    try {
+      await sendPasswordResetEmail(auth, email, actionCodeSettings);
+      toast.success(
+        "Password reset email sent! Check your inbox or spam folder."
+      );
+    } catch (error) {
+      if (error.code === "auth/user-not-found") {
+        toast.error("No account found with that email.");
+      } else if (error.code === "auth/invalid-email") {
+        toast.error("Please enter a valid email address.");
+      } else {
+        toast.error("Something went wrong. Please try again.");
+      }
+    }
   };
 
   return (
@@ -103,7 +116,7 @@ const Login = () => {
                 onClick={() => setShowPassword(!showPassword)}
                 className="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-500 z-10"
               >
-                {showPassword ? <FontAwesomeIcon icon={faEyeSlash} />:<FontAwesomeIcon icon={faEye} />}
+                {showPassword ? <FontAwesomeIcon icon={faEyeSlash} /> : <FontAwesomeIcon icon={faEye} />}
               </button>
             </div>
           </div>

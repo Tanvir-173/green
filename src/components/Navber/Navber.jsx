@@ -1,11 +1,11 @@
 import React, { useState, useContext } from "react";
 import { NavLink } from "react-router";
-import { AuthContext } from "../../context/AuthProvider"; 
+import { AuthContext } from "../../context/AuthProvider";
 import logo from "./gree.jpg"
 
 const Navbar = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const { user, logOut } = useContext(AuthContext); 
+  const { user, logOut } = useContext(AuthContext);
 
   const handleLogout = async () => {
     try {
@@ -36,9 +36,9 @@ const Navbar = () => {
       </div>
 
       <div className="navbar-center  felx flex-col md:flex-row">
-          <img className="w-10 h-10" src={logo}/>
-          <p className="btn btn-ghost text-xl normal-case">GreenNest</p> 
-        
+        <img className="w-10 h-10" src={logo} />
+        <p className="btn btn-ghost text-xl normal-case">GreenNest</p>
+
       </div>
 
       <div className="navbar-end hidden md:flex items-center space-x-6">
@@ -49,9 +49,20 @@ const Navbar = () => {
           Plants
         </NavLink>
         {user && (
-          <NavLink to="/profile" className="text-green-700 hover:text-green-900 font-medium">
-            {user.displayName || "Profile"}
+          <NavLink to="/profile" className="flex items-center">
+            {user?.photoURL ? (
+              <img
+                src={user.photoURL}
+                alt="User Profile"
+                className="w-10 h-10 rounded-full border-2 border-green-700 object-cover"
+              />
+            ) : (
+              <div className="w-10 h-10 rounded-full bg-green-200 flex items-center justify-center text-green-700 font-bold">
+                P
+              </div>
+            )}
           </NavLink>
+
         )}
       </div>
 
@@ -83,4 +94,3 @@ const Navbar = () => {
 
 export default Navbar;
 
-             
