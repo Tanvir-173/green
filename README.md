@@ -17,3 +17,5 @@ React Hot Toast – Shows success/error notifications, e.g., when profile update
 FontAwesome – Provides icons, e.g. profile placeholder when no photo is available.
 
 Google Fonts – Custom fonts like Playwrite DE SAS for better typography.
+
+Firebase deploy
