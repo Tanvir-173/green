@@ -22,18 +22,18 @@ const Home = () => {
             .then((res) => res.json())
             .then((data) => {
                 setPlants(data)
-                console.log(data)
+                // console.log(data)
             })
             .catch((err) => console.error("Failed to load plants:", err));
     }, []);
-    console.log(plants)
+    // console.log(plants)
 
     const careTips = [
         { title: "Watering", description: "Water your plants 1-2 times per week depending on the species." },
         { title: "Sunlight", description: "Most indoor plants thrive in indirect sunlight." },
         { title: "Fertilizing", description: "Feed your plants once a month with organic fertilizer." },
     ];
-    console.log(careTips)
+    // console.log(careTips)
     const experts = [
         { name: "Piet de Jong", image: dendro, specialty: "dendrologist" },
         { name: "Prof. Edward (Ted) Wilson MSIF FRSB", image: serv, specialty: "silviculturist" },

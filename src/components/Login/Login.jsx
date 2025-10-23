@@ -13,6 +13,7 @@ import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 
 const Login = () => {
+  const baseUrl = window.location.origin;
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
@@ -62,7 +63,8 @@ const Login = () => {
 
     // Redirect after password reset (change to your deployed site login page)
     const actionCodeSettings = {
-      url: import.meta.env.VITE_APP_URL + "/login", 
+      
+       url: `${baseUrl}/login`, 
       handleCodeInApp: false, 
     };
 
