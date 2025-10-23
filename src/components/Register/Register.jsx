@@ -46,7 +46,7 @@ const Register = () => {
       .then((res) => {
         updateProfile(res.user, { displayName: name, photoURL: photo });
         toast.success("Registration successful!");
-        navigate("/login");
+        navigate("/");
       })
       .catch((error) => {
         toast.error(error.message);
