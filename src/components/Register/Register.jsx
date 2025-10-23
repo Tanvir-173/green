@@ -63,7 +63,7 @@ const Register = () => {
     });
 
     toast.success("Registration successful!");
-    navigate("/"); // Go home immediately
+    navigate("/"); 
   } catch (error) {
     toast.error(error.message);
   } finally {
