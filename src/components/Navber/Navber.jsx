@@ -1,13 +1,12 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import { NavLink } from "react-router";
 import { AuthContext } from "../../context/AuthProvider";
 import logo from "./gree.jpg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserCircle } from "@fortawesome/free-solid-svg-icons";
-import dendro from "../../assets/dendro.jpg"; 
+import dendro from "../../assets/dendro.jpg";
 
 const Navbar = () => {
-  const [dropdownOpen, setDropdownOpen] = useState(false);
   const { user, logOut } = useContext(AuthContext);
 
   const handleLogout = async () => {
@@ -21,6 +20,7 @@ const Navbar = () => {
 
   return (
     <div className="navbar bg-base-100 shadow-sm px-4">
+      {/* Left side: login/logout buttons */}
       <div className="navbar-start flex items-center space-x-2">
         {user ? (
           <button onClick={handleLogout} className="btn btn-sm btn-primary">
@@ -38,16 +38,24 @@ const Navbar = () => {
         )}
       </div>
 
-      <div className="navbar-center flex flex-col md:flex-row">
+      {/* Center: Logo and name */}
+      <div className="navbar-center flex flex-col md:flex-row items-center gap-2">
         <img className="w-10 h-10" src={logo} alt="Logo" />
         <p className="btn btn-ghost text-xl normal-case">GreenNest</p>
       </div>
 
+      {/* Desktop Menu */}
       <div className="navbar-end hidden md:flex items-center space-x-6">
-        <NavLink to="/" className="text-green-700 hover:text-green-900 font-medium">
+        <NavLink
+          to="/"
+          className="text-green-700 hover:text-green-900 font-medium"
+        >
           Home
         </NavLink>
-        <NavLink to="/plants" className="text-green-700 hover:text-green-900 font-medium">
+        <NavLink
+          to="/plants"
+          className="text-green-700 hover:text-green-900 font-medium"
+        >
           Plants
         </NavLink>
         {user && (
@@ -61,10 +69,10 @@ const Navbar = () => {
                 onError={(e) => (e.currentTarget.src = dendro)}
               />
             ) : (
-              <div className="w-10 h-10 rounded-full bg-green-200 flex items-center justify-center text-green-700 font-bold">
+              <div className="w-10 h-10 rounded-full bg-green-200 flex items-center justify-center">
                 <FontAwesomeIcon
                   icon={faUserCircle}
-                  className="text-6xl text-gray-400 mb-0"
+                  className="text-4xl text-gray-400"
                 />
               </div>
             )}
@@ -72,26 +80,63 @@ const Navbar = () => {
         )}
       </div>
 
-      {/* Mobile dropdown */}
+      {/* Mobile Dropdown (DaisyUI built-in) */}
       <div className="navbar-end md:hidden flex items-center">
-        <div className="dropdown">
+        <div className="dropdown dropdown-end">
           <div
             tabIndex={0}
             role="button"
             className="btn btn-ghost btn-circle"
-            onClick={() => setDropdownOpen(!dropdownOpen)}
           >
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h7" />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-5 w-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              />
             </svg>
           </div>
-          {dropdownOpen && (
-            <ul tabIndex="-1" className="menu menu-sm dropdown-content bg-base-100 rounded-box z-10 mt-3 w-52 p-2 shadow">
-              <li><NavLink to="/" onClick={() => setDropdownOpen(false)}>Home</NavLink></li>
-              <li><NavLink to="/plants" onClick={() => setDropdownOpen(false)}>Plants</NavLink></li>
-              {user && <li><NavLink to="/profile" onClick={() => setDropdownOpen(false)}>{user.displayName || "Profile"}</NavLink></li>}
-            </ul>
-          )}
+
+          <ul
+            tabIndex={0}
+            className="menu menu-sm dropdown-content mt-3 z-[999] p-2 shadow bg-base-100 rounded-box w-52"
+          >
+            <li>
+              <NavLink to="/">Home</NavLink>
+            </li>
+            <li>
+              <NavLink to="/plants">Plants</NavLink>
+            </li>
+            {user && (
+              <li>
+                <NavLink to="/profile" className="flex items-center gap-2">
+                  {user.photoURL ? (
+                    <img
+                      src={user.photoURL}
+                      alt="User Profile"
+                      className="w-8 h-8 rounded-full border-2 border-green-700 object-cover"
+                      referrerPolicy="no-referrer"
+                      onError={(e) => (e.currentTarget.src = dendro)} // fallback image
+                    />
+                  ) : (
+                    <FontAwesomeIcon
+                      icon={faUserCircle}
+                      className="text-2xl text-gray-400"
+                    />
+                  )}
+                  <span>{user.displayName || "Profile"}</span>
+                </NavLink>
+              </li>
+            )}
+
+          </ul>
         </div>
       </div>
     </div>
