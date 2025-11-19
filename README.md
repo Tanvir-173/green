@@ -1,21 +1,35 @@
-Project Tools & Usage (briefly)
 
-React – Frontend library to build components like Navbar, Profile, Home, and Plant.
+---
 
-Firebase – Backend service for Authentication, Firestore, and Storage, handling login, logout, and user profile updates.
+## 2️ **Greenest (`README.md`)**
 
-React Context & Private Route 
+```markdown
+# Greenest 
 
-AuthContext stores the current user globally.
 
-Private Route ensures certain pages (like Profile) are only accessible to logged-in users.
+## Live Link
+[Visit Site](https://green-90d20.web.app)
 
-Tailwind CSS – Utility-first CSS for responsive layouts, colors, and styling.
+##  Overview
+Greenest is an eco-friendly website that promotes sustainable living and eco products. Users can browse products, contact the team, and learn about eco-friendly initiatives.  
 
-React Hot Toast – Shows success/error notifications, e.g., when profile updates.
+##  Tech Stack
+- **Frontend:** React, Tailwind CSS  
+- **Backend / Services:** Firebase (Authentication & localstorage)  
 
-FontAwesome – Provides icons, e.g. profile placeholder when no photo is available.
+##  Main Features
+- Product listing and details  
+- User authentication and contact form  
+- Responsive and mobile-friendly layout  
+- Information and tips for eco-friendly living  
 
-Google Fonts – Custom fonts like Playwrite DE SAS for better typography.
+##  Dependencies
+- firebase  
+- react-icons  
+- tailwindcss  
 
-Firebase deploy
+##  Run Locally
+1. Clone the repository:
+```bash
+git clone https://github.com/Tanvir-173/green
+cd greenest
