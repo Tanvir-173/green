@@ -5,9 +5,11 @@ import { updateProfile } from "firebase/auth";
 import toast from "react-hot-toast";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserCircle } from "@fortawesome/free-solid-svg-icons";
-import dendro from "../../assets/dendro.jpg"; 
+import avator from "./avator.jpg"
 
-const MAX_URL_LENGTH = 2000; 
+
+
+const MAX_URL_LENGTH = 2000;
 
 const Profile = () => {
   const { user, setUser } = useContext(AuthContext);
@@ -29,7 +31,7 @@ const Profile = () => {
     try {
       await updateProfile(auth.currentUser, {
         displayName: name,
-        photoURL: photoURL || null, 
+        photoURL: photoURL || null,
       });
 
       // Update context immediately so Navbar updates
@@ -62,7 +64,7 @@ const Profile = () => {
                   alt="User"
                   className="w-24 h-24 rounded-full mb-3 border object-cover"
                   referrerPolicy="no-referrer"
-                  onError={(e) => (e.currentTarget.src = dendro)} 
+                  onError={(e) => (e.currentTarget.src = avator)}
                 />
               ) : (
                 <FontAwesomeIcon

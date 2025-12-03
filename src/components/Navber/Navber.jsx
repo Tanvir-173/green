@@ -150,8 +150,8 @@ import { AuthContext } from "../../context/AuthProvider";
 import logo from "./gree.jpg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserCircle } from "@fortawesome/free-solid-svg-icons";
-import dendro from "../../assets/dendro.jpg";
 import toast from "react-hot-toast";
+import avator from "./avator.jpg"
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -208,7 +208,7 @@ const Navbar = () => {
                     alt="User Profile"
                     className="w-10 h-10 rounded-full border-2 border-white object-cover"
                     referrerPolicy="no-referrer"
-                    onError={(e) => (e.currentTarget.src = dendro)}
+                    onError={(e) => (e.currentTarget.src =avator)}
                   />
                 ) : (
                   <FontAwesomeIcon icon={faUserCircle} className="text-4xl text-white" />
@@ -252,7 +252,7 @@ const Navbar = () => {
                       src={user.photoURL}
                       alt="User"
                       className="w-8 h-8 rounded-full border-2 border-green-600 object-cover"
-                      onError={(e) => (e.currentTarget.src = dendro)}
+                      onError={(e) => (e.currentTarget.src = avator)}
                     />
                   ) : (
                     <FontAwesomeIcon icon={faUserCircle} className="text-2xl" />
