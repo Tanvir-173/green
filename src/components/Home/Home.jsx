@@ -12,7 +12,7 @@ import PlantOfTheWeek from "../platoftheweek/plantofTheweek";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import tree from "../../assets/pexels-pixabay-33044.jpg"
-import  "./Home.css"
+import "./Home.css"
 
 const Home = () => {
     const [plants, setPlants] = useState([]);
@@ -89,7 +89,7 @@ const Home = () => {
                 <h2 className="text-2xl md:text-3xl font-semibold mb-6">
                     Top Rated Indoor Plants
                 </h2>
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                {/* <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                     {plants
                         .sort((a, b) => b.rating - a.rating)
                         .map((plant) => (
@@ -113,7 +113,40 @@ const Home = () => {
                                 </Link>
                             </div>
                         ))}
+                </div> */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                    {plants
+                        .sort((a, b) => b.rating - a.rating)
+                        .map((plant) => (
+                            <div
+                                key={plant.plantId}
+                                className="bg-white rounded-xl shadow-md hover:shadow-xl hover:-translate-y-1 hover:scale-[1.02] transition-transform duration-300 p-4 flex flex-col"
+                            >
+                                <img
+                                    src={plant.image}
+                                    alt={plant.plantName}
+                                    className="w-full h-48 object-cover rounded-lg mb-4"
+                                />
+
+                                <h3 className="font-semibold text-lg mb-1">{plant.plantName}</h3>
+
+                                <p className="text-green-700 font-bold text-md mb-1">
+                                    ৳ {plant.price}
+                                </p>
+
+                                <p className="text-yellow-500 text-sm flex items-center gap-1 mb-3">
+                                    <FontAwesomeIcon icon={faStar} /> {plant.rating}
+                                </p>
+
+                                <Link to={`/plants/${plant.plantId}`} className="mt-auto">
+                                    <button className="w-full bg-green-600 hover:bg-green-700 text-white py-2 rounded-md font-medium transition">
+                                        View Details
+                                    </button>
+                                </Link>
+                            </div>
+                        ))}
                 </div>
+
             </section>
 
 

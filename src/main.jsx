@@ -12,6 +12,7 @@ import PrivateRoute from "./routes/PrivateRoute";
 import PlantDetails from "./components/PlantDetails/PlantDetails";
 import Profile from "./components/My profile/Profile";
 import Plant from "./components/Plants/Plant";
+import ErrorPage from "./components/ErrorPage/ErrorPage";
 
 const router = createBrowserRouter([
   {
@@ -36,6 +37,10 @@ const router = createBrowserRouter([
       {
         path:"plants",
         Component:Plant
+      },
+      {
+        path:'*',
+        Component:ErrorPage
       }
     ],
   },
