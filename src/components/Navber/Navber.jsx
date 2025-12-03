@@ -151,18 +151,20 @@ import logo from "./gree.jpg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserCircle } from "@fortawesome/free-solid-svg-icons";
 import dendro from "../../assets/dendro.jpg";
+import toast from "react-hot-toast";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
 
   const handleLogout = async () => {
-    try {
-      await logOut();
-      alert("Logged out successfully!");
-    } catch (err) {
-      console.error(err);
-    }
-  };
+  try {
+    await logOut();
+    toast.success("Logged out successfully!");
+  } catch (err) {
+    console.error(err);
+    toast.error("Logout failed!");
+  }
+};
 
   return (
     <div className="bg-green-600 sticky top-0 z-50 shadow-lg">
