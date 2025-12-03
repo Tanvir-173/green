@@ -167,12 +167,14 @@ const Navbar = () => {
   return (
     <div className="bg-green-600 sticky top-0 z-50 shadow-lg">
       <div className="navbar max-w-7xl mx-auto px-4">
+
         
         {/* Left: Logo + Name */}
-        <div className="navbar-start flex items-center gap-2">
+        <div className="navbar-start flex flex-col md:flex-row items-center md:gap-2 gap-1">
           <img className="w-10 h-10 rounded-md" src={logo} alt="Logo" />
-          <p className="text-white text-2xl font-semibold">GreenNest</p>
+          <p className="text-white text-2xl font-semibold mt-1 md:mt-0">GreenNest</p>
         </div>
+
 
         {/* Center: Desktop Menu */}
         <div className="navbar-center hidden md:flex space-x-6">

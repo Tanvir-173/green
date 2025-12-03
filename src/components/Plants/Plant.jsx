@@ -17,6 +17,7 @@
 
 // export default Plant;
 import { useEffect, useState } from "react";
+import { Link } from "react-router"; // <-- import Link
 import "./plant.css";
 
 const Plant = () => {
@@ -29,7 +30,7 @@ const Plant = () => {
 
   const [categories, setCategories] = useState([]);
 
-  // Fetch real data from plant.json
+  // Fetch data
   useEffect(() => {
     fetch("/plant.json")
       .then((res) => res.json())
@@ -52,16 +53,14 @@ const Plant = () => {
     setDisplayPlants(sorted);
   }, [sortOrder]);
 
-  // Filtering logic
+  // Filtering + Search
   const applyFilters = (category, searchValue) => {
     let filtered = plants;
 
-    // Filter by category
     if (category !== "all") {
       filtered = filtered.filter((item) => item.category === category);
     }
 
-    // Search by plant name
     if (searchValue.trim() !== "") {
       filtered = filtered.filter((item) =>
         item.plantName.toLowerCase().includes(searchValue.toLowerCase())
@@ -145,11 +144,12 @@ const Plant = () => {
               <p className="text-green-700 font-bold mt-1">৳ {plant.price}</p>
               <p className="text-sm text-gray-500 mt-1">{plant.category}</p>
 
-              <a href={`/plants/${plant.plantId}`} className="mt-auto">
-                <button className="btn btn-success btn-sm w-full mt-4">
+              {/* Use Link for private route */}
+              <Link to={`/plants/${plant.plantId}`} className="mt-auto">
+                <button className="w-full bg-green-600 hover:bg-green-700 text-white py-2 rounded-md font-medium transition">
                   View Details
                 </button>
-              </a>
+              </Link>
             </div>
           ))}
         </div>
